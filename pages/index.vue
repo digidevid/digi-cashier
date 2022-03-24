@@ -13,14 +13,14 @@
               <button @click="minus(food)" :disabled="food.quantity === 0">
                 <font-awesome-icon
                   :icon="['fa', 'circle-minus']"
-                  class="text-red-400"
+                  class="text-red-400 w-6 h-6"
                 />
               </button>
               <p>{{ food.quantity }}</p>
               <button @click="plus(food)">
                 <font-awesome-icon
                   :icon="['fa', 'circle-plus']"
-                  class="text-green-400"
+                  class="text-green-400 w-6 h-6"
                 />
               </button>
             </div>
@@ -38,14 +38,14 @@
               <button @click="minus(drink)" :disabled="drink.quantity === 0">
                 <font-awesome-icon
                   :icon="['fa', 'circle-minus']"
-                  class="text-red-400"
+                  class="text-red-400 w-6 h-6"
                 />
               </button>
               <p>{{ drink.quantity }}</p>
               <button @click="plus(drink)">
                 <font-awesome-icon
                   :icon="['fa', 'circle-plus']"
-                  class="text-green-400"
+                  class="text-green-400 w-6 h-6"
                 />
               </button>
             </div>
