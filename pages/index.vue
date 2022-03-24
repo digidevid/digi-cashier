@@ -130,9 +130,11 @@ export default {
     reset() {
       this.foods.forEach((el) => {
         el.quantity = 0;
+        el.totalPrice = 0;
       });
       this.drinks.forEach((el) => {
         el.quantity = 0;
+        el.totalPrice = 0;
       });
       this.total = 0;
     },
@@ -180,6 +182,7 @@ export default {
       Promise.all(fetches).then((res) => {
         this.isShowModalCheckout = false;
         this.isLoadingSubmit = false;
+        this.reset();
       });
     },
     toRupiah,
