@@ -50,12 +50,12 @@
             </div>
             <div>
               <button
-                class="bg-blue-500 w-full py-3 text-lg font-semibold text-white rounded-md"
+                class="bg-blue-500 w-full py-3 text-lg font-semibold text-white rounded-md disabled:opacity-50"
                 @click="submitData"
                 :disabled="isLoading"
               >
                 <div v-if="isLoading">
-                  <font-awesome-icon :icon="['fa', 'circle-o-notch', 'spin']" />
+                  <i class="fa fa-circle-o-notch fa-spin"></i>
                   Loading...
                 </div>
                 <div v-else>Submit</div>

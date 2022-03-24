@@ -60,6 +60,14 @@
         <p>TOTAL</p>
         <p>{{ toRupiah(total) }}</p>
       </div>
+      <div class="p-2 pb-0">
+        <button
+          class="bg-red-500 w-full py-3 text-lg font-semibold text-white rounded-md"
+          @click="reset"
+        >
+          Reset
+        </button>
+      </div>
       <div class="p-2">
         <button
           class="bg-blue-500 w-full py-3 text-lg font-semibold text-white rounded-md"
@@ -119,6 +127,14 @@ export default {
         .reduce((prev, curr) => prev + curr, 0);
       this.total = totalFoodPrice + totalDrinkPrice;
     },
+    reset() {
+      this.foods.forEach((el) => {
+        el.quantity = 0;
+      });
+      this.drinks.forEach((el) => {
+        el.quantity = 0;
+      });
+    },
     checkout() {
       const allMenu = this.foods.concat(this.drinks);
       this.checkoutItems = allMenu.filter((item) => item.quantity > 0);
@@ -127,12 +143,14 @@ export default {
     onCloseModalCheckout() {
       this.isShowModalCheckout = false;
     },
-    async submitData(data) {
+    submitData(data) {
       this.isLoadingSubmit = true;
       const scriptUrl =
         "https://script.google.com/macros/s/AKfycbyQRHwlWM_dvlXiMNX2EYKX3HkGSmN6kh13efYk_B_gYjBhTJPoW5QNseS9w_SwaSAu/exec";
 
-      await data.forEach((el) => {
+      const fetches = [];
+      let isSuccess = true;
+      data.forEach((el) => {
         const newForm = new FormData();
         const today = new Date();
 
@@ -142,20 +160,26 @@ export default {
         newForm.append("Jumlah", el.quantity);
         newForm.append("Total", el.totalPrice);
 
-        fetch(scriptUrl, {
-          method: "POST",
-          body: newForm,
-          changeOrigin: true,
-        })
-          .then((response) => {
-            console.log("Success!", response);
+        fetches.push(
+          fetch(scriptUrl, {
+            method: "POST",
+            body: newForm,
+            changeOrigin: true,
           })
-          .catch((error) => {
-            console.error("Error!", error.message);
-          });
+            .then((response) => {
+              console.log("Success!", response);
+            })
+            .catch((error) => {
+              console.error("Error!", error.message);
+              alert(error.message);
+              isSuccess = false;
+            })
+        );
       });
-      this.isShowModalCheckout = false;
-      this.isLoadingSubmit = false;
+      Promise.all(fetches).then((res) => {
+        this.isShowModalCheckout = false;
+        this.isLoadingSubmit = false;
+      });
     },
     toRupiah,
   },
