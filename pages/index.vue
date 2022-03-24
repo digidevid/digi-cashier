@@ -134,6 +134,7 @@ export default {
       this.drinks.forEach((el) => {
         el.quantity = 0;
       });
+      this.total = 0;
     },
     checkout() {
       const allMenu = this.foods.concat(this.drinks);
