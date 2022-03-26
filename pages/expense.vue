@@ -35,8 +35,10 @@
         </button>
       </div>
     </div>
-    <div class="fixed bottom-0 left-0 bg-white rounded-t-2xl w-full px-4">
-      <div class="flex justify-between items-center my-3 text-xl font-semibold">
+    <div class="fixed bottom-0 left-0 bg-white rounded-t-2xl w-full px-2 pb-2">
+      <div
+        class="flex justify-between items-center my-3 text-xl font-bold px-4"
+      >
         <p>TOTAL</p>
         <p>{{ toRupiah(total) }}</p>
       </div>
@@ -53,14 +55,14 @@
           <div v-else>Submit</div>
         </button>
       </div>
-      <div class="w-full flex justify-between space-x-3 items-center mt-3">
+      <div class="w-full flex justify-between space-x-3 items-center mt-2">
         <button
           class="bg-red-500 w-full py-3 text-lg font-semibold text-white rounded-md disabled:opacity-50"
           @click="reset"
         >
           Reset
         </button>
-        <button @click="plus">
+        <button class="mt-1" @click="plus">
           <font-awesome-icon
             :icon="['fa', 'circle-plus']"
             class="text-green-400 w-12 h-12"
