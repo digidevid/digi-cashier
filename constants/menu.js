@@ -114,7 +114,7 @@ export const foods = [
   {
     id: 17,
     name: "Pop mie",
-    price: 8000,
+    price: 7000,
     quantity: 0,
     totalPrice: 0,
   },
@@ -293,6 +293,13 @@ export const drinks = [
     id: 24,
     name: "Es Kosong",
     price: 2000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 25,
+    name: "Tropical Soda",
+    price: 10000,
     quantity: 0,
     totalPrice: 0,
   },

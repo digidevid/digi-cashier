@@ -48,11 +48,26 @@
               <p>TOTAL</p>
               <p>{{ toRupiah(total) }}</p>
             </div>
+            <div class="flex justify-between items-center my-4">
+              <div
+                v-for="(person, id) in picList"
+                :key="id"
+                class="flex items-center space-x-1"
+              >
+                <input
+                  class="w-4 h-4"
+                  type="radio"
+                  v-model="pic"
+                  :value="person.value"
+                />
+                <label class="text-md font-semibold">{{ person.name }}</label>
+              </div>
+            </div>
             <div>
               <button
                 class="bg-blue-500 w-full py-3 text-lg font-semibold text-white rounded-md disabled:opacity-50"
                 @click="submitData"
-                :disabled="isLoading"
+                :disabled="isLoading || checkoutMenus.length === 0"
               >
                 <div v-if="isLoading">
                   <i class="fa fa-circle-o-notch fa-spin"></i>
@@ -93,12 +108,35 @@ export default {
       default: 0,
     },
   },
+  data() {
+    return {
+      pic: "Ihsan",
+      picList: [
+        {
+          name: "Ihsan",
+          value: "Ihsan",
+        },
+        {
+          name: "Bembeng",
+          value: "Bembeng",
+        },
+        {
+          name: "Ibnu",
+          value: "Ibnu",
+        },
+        {
+          name: "Faishal",
+          value: "Faishal",
+        },
+      ],
+    };
+  },
   methods: {
     onClose() {
       this.$emit("onClose");
     },
     submitData() {
-      this.$emit("submitData", this.checkoutMenus);
+      this.$emit("submitData", this.checkoutMenus, this.pic);
     },
     toRupiah,
   },

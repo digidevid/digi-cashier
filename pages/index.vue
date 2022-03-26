@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-blue-100 max-w-lg mx-auto">
+  <div class="bg-blue-100 pt-14">
     <div class="p-8">
-      <h1 class="text-center text-3xl font-bold my-4">Kasir DigiCafe</h1>
+      <h1 class="text-center text-3xl font-bold mb-4">Kasir DigiCafe</h1>
       <div>
         <h3 class="text-xl font-bold mb-2">Foods</h3>
         <div v-for="(food, id) in foods" :key="id">
@@ -146,8 +146,11 @@ export default {
     onCloseModalCheckout() {
       this.isShowModalCheckout = false;
     },
-    submitData(data) {
+    submitData(data, pic) {
       this.isLoadingSubmit = true;
+      data.forEach((el) => {
+        el.pic = pic;
+      });
       const scriptUrl =
         "https://script.google.com/macros/s/AKfycbyQRHwlWM_dvlXiMNX2EYKX3HkGSmN6kh13efYk_B_gYjBhTJPoW5QNseS9w_SwaSAu/exec";
 
@@ -156,27 +159,28 @@ export default {
       data.forEach((el) => {
         const newForm = new FormData();
         const today = new Date();
+        const hour = today.getHours();
+        const minute = today.getMinutes();
+        const time = `${hour}:${minute}`;
 
         newForm.append("Tanggal", today.toDateString());
+        newForm.append("Jam", time);
         newForm.append("Nama", el.name);
         newForm.append("Harga", el.price);
         newForm.append("Jumlah", el.quantity);
         newForm.append("Total", el.totalPrice);
+        newForm.append("PIC", el.pic);
 
         fetches.push(
           fetch(scriptUrl, {
             method: "POST",
             body: newForm,
             changeOrigin: true,
+          }).catch((error) => {
+            console.error("Error!", error.message);
+            alert(error.message);
+            isSuccess = false;
           })
-            .then((response) => {
-              console.log("Success!", response);
-            })
-            .catch((error) => {
-              console.error("Error!", error.message);
-              alert(error.message);
-              isSuccess = false;
-            })
         );
       });
       Promise.all(fetches).then((res) => {
