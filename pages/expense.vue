@@ -1,41 +1,45 @@
 <template>
-  <div class="bg-blue-100 p-4 pt-20 pb-52 min-h-screen">
-    <h3 class="text-center text-3xl font-bold mb-4">Pengeluaran</h3>
-    <div class="flex justify-between items-center my-2">
+  <div class="bg-blue-100 min-h-screen pt-14 pb-48">
+    <div class="p-4 pt-8">
+      <h3 class="text-center text-3xl font-bold mb-4">Belanja DigiCafe</h3>
+      <div class="flex justify-between items-center my-2">
+        <div
+          v-for="(person, id) in picList"
+          :key="id"
+          class="flex items-center space-x-1"
+        >
+          <input
+            class="w-4 h-4"
+            type="radio"
+            v-model="pic"
+            :value="person.value"
+          />
+          <label class="text-md font-semibold">{{ person.name }}</label>
+        </div>
+      </div>
       <div
-        v-for="(person, id) in picList"
+        v-for="(item, id) in expenseList"
         :key="id"
-        class="flex items-center space-x-1"
+        class="flex justify-between items-center border-b-2 border-gray-600 border-dashed pb-2 space-y-1 mt-2"
       >
-        <input
-          class="w-4 h-4"
-          type="radio"
-          v-model="pic"
-          :value="person.value"
-        />
-        <label class="text-md font-semibold">{{ person.name }}</label>
+        <div>
+          <p>{{ item.name }}</p>
+          <p class="text-sm">{{ item.desc }}</p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <p class="text-lg">{{ toRupiah(item.totalPrice) }}</p>
+          <button @click="minus(id)">
+            <font-awesome-icon
+              :icon="['fa', 'circle-minus']"
+              class="text-red-400 w-6 h-6"
+            />
+          </button>
+        </div>
       </div>
     </div>
     <div
-      v-for="(item, id) in expenseList"
-      :key="id"
-      class="flex justify-between items-center border-b-2 border-gray-600 border-dashed pb-2 space-y-1 mt-2"
+      class="fixed bottom-0 max-w-lg mx-auto bg-white rounded-t-2xl w-full px-2 pb-2"
     >
-      <div>
-        <p>{{ item.name }}</p>
-        <p class="text-sm">{{ item.desc }}</p>
-      </div>
-      <div class="flex items-center space-x-3">
-        <p class="text-lg">{{ toRupiah(item.totalPrice) }}</p>
-        <button @click="minus(id)">
-          <font-awesome-icon
-            :icon="['fa', 'circle-minus']"
-            class="text-red-400 w-6 h-6"
-          />
-        </button>
-      </div>
-    </div>
-    <div class="fixed bottom-0 left-0 bg-white rounded-t-2xl w-full px-2 pb-2">
       <div
         class="flex justify-between items-center my-3 text-xl font-bold px-4"
       >
