@@ -149,11 +149,17 @@ export default {
       this.expenseList.forEach((el) => {
         const newForm = new FormData();
         const today = new Date();
+
+        const date = today.getDate();
+        const month = today.getMonth() + 1;
+        const year = today.getFullYear();
+        const fullDate = `${date}/${month}/${year}`;
+
         const hour = today.getHours();
         const minute = today.getMinutes();
         const time = `${hour}:${minute}`;
 
-        newForm.append("Tanggal", today.toDateString());
+        newForm.append("Tanggal", fullDate);
         newForm.append("Jam", time);
         newForm.append("Nama", el.name);
         newForm.append("Keterangan", el.desc);
