@@ -32,7 +32,7 @@
             <div
               v-for="(item, id) in checkoutMenus"
               :key="id"
-              class="flex justify-between items-center border-b-2 border-dashed pb-1 space-y-1 mt-2"
+              class="flex justify-between items-center border-b-2 border-dashed pb-1 space-x-2 space-y-1 mt-2"
             >
               <div>
                 <p>{{ item.name }}</p>

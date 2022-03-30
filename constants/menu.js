@@ -1,3 +1,48 @@
+export const packets = [
+  {
+    id: 1,
+    name: "Nasi Goreng Spesial + Teh Manis Dingin",
+    price: 19000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 2,
+    name: "Nasi Goreng Spesial + Tropical Punch",
+    price: 25000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 3,
+    name: "Nasi Goreng Spesial + Matcha Vanilla",
+    price: 25000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 4,
+    name: "Indomie Goreng Spesial + Teh Manis Dingin",
+    price: 17000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 5,
+    name: "Indomie Goreng Spesial + Tropical Punch",
+    price: 22000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+  {
+    id: 6,
+    name: "Indomie Goreng Spesial + Matcha Vanilla",
+    price: 22000,
+    quantity: 0,
+    totalPrice: 0,
+  },
+];
+
 export const foods = [
   {
     id: 1,
@@ -236,14 +281,14 @@ export const drinks = [
   {
     id: 16,
     name: "Lemon Tea",
-    price: 8000,
+    price: 10000,
     quantity: 0,
     totalPrice: 0,
   },
   {
     id: 17,
     name: "Lemon Tea Dingin",
-    price: 10000,
+    price: 12000,
     quantity: 0,
     totalPrice: 0,
   },
