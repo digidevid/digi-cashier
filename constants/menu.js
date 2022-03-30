@@ -174,6 +174,30 @@ export const foods = [
 
 export const drinks = [
   {
+    id: 25,
+    name: "Tropical Punch",
+    price: 13000,
+    quantity: 0,
+    totalPrice: 0,
+    label: "NEW",
+  },
+  {
+    id: 26,
+    name: "Matcha Vanilla",
+    price: 13000,
+    quantity: 0,
+    totalPrice: 0,
+    label: "NEW",
+  },
+  {
+    id: 27,
+    name: "Orange Soda",
+    price: 13000,
+    quantity: 0,
+    totalPrice: 0,
+    label: "NEW",
+  },
+  {
     id: 1,
     name: "Air Mineral",
     price: 5000,
