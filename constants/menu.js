@@ -365,11 +365,4 @@ export const drinks = [
     quantity: 0,
     totalPrice: 0,
   },
-  {
-    id: 25,
-    name: "Tropical Soda",
-    price: 10000,
-    quantity: 0,
-    totalPrice: 0,
-  },
 ];
